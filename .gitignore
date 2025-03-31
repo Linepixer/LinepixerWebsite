@@ -1,1 +1,15 @@
+# Ignorar archivos del entorno virtual
 venv/
+
+# Ignorar archivos de configuracion de Visual Studio Code
+.vscode/
+
+# Ignorar archivos de bytecode generados por Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar archivos sensibles de certificados y claves
+*.crt
+*.key
+*.csr

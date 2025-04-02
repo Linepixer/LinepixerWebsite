@@ -2,22 +2,92 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #1e1e1e; /* fondo tipo VS Code */
+            color: #d4d4d4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 2rem;
+            background-color: #252526; /* panel oscuro como VS Code */
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+        .form-label {
+            color: #cccccc;
+        }
+        .form-control {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            border: 1px solid #3c3c3c;
+        }
+        .form-control:focus {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border-color: #007acc; /* color azul VS Code */
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: #007acc;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #008ae6;
+        }
+        .alert {
+            background-color: #3c3c3c;
+            color: #ff6a6a;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color:red;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        <label>Usuario:</label><br>
-        <input type="text" name="username" required><br><br>
-        <label>Contraseña:</label><br>
-        <input type="password" name="password" required><br><br>
-        <button type="submit">Ingresar</button>
-    </form>
+    <div class="login-container">
+        <h2 class="text-center mb-4">Iniciar sesión</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                        <i class="bi bi-eye" id="toggleIcon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const toggleBtn = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggleIcon');
+    
+        toggleBtn.addEventListener('click', () => {
+            const isHidden = passwordInput.type === 'password';
+            passwordInput.type = isHidden ? 'text' : 'password';
+            toggleIcon.className = isHidden ? 'bi bi-eye-slash' : 'bi bi-eye';
+        });
+    </script>
 </body>
 </html>

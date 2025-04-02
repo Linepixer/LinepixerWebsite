@@ -13,3 +13,19 @@ __pycache__/
 *.crt
 *.key
 *.csr
+
+# Ignorar base de datos
+db.sqlite3
+
+# Ignorar archivos de migraciones
+**/migrations/
+!**/migrations/__init__.py
+
+# Ignorar archivos de entorno
+.env
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
+*.bak
+*.swp

@@ -4,9 +4,38 @@ body {
     background-color: white;
 }
 
-.onda {
+.left-panel {
+    position: relative;
     width: 58vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.onda {
+    width: 100%;
     height: 100vh;
     object-fit: fill;
     display: block;
+}
+
+.branding {
+    position: absolute;
+    top: 28%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: white;
+}
+
+.branding h1 {
+    font-size: 60px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.branding p {
+    font-size: 26px;
+    font-family: 'Libre Baskerville', serif;
+    line-height: 1.5;
 }

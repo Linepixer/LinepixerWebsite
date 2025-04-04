@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.onda {
+    width: 58vw;
+    height: 100vh;
+    object-fit: fill;
+    display: block;
+}
